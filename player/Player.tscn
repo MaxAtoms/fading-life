@@ -116,8 +116,9 @@ func start_timer():
 		timer.paused = false
 "
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_kne1u"]
-size = Vector2(24, 25)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_u8vxv"]
+radius = 5.0
+height = 18.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ulp21"]
 bg_color = Color(0, 0, 0, 1)
@@ -261,8 +262,7 @@ z_index = 1
 texture_filter = 1
 
 [node name="PlayerCollisionShape" type="CollisionShape2D" parent="."]
-visible = false
-shape = SubResource("RectangleShape2D_kne1u")
+shape = SubResource("CapsuleShape2D_u8vxv")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 visible = false
