@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://dgrydy8x35h8o"]
+
+[ext_resource type="Texture2D" uid="uid://dfqlndqcfokmi" path="res://gameElements/sun.png" id="1_ek21n"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7b4h2"]
+radius = 9.0
+
+[node name="LifeOrb" type="Area2D"]
+
+[node name="LifeOrbSprite" type="Sprite2D" parent="."]
+texture = ExtResource("1_ek21n")
+
+[node name="LifeOrbCollision" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_7b4h2")

@@ -43,10 +43,15 @@ size = Vector2(24, 25)
 script = SubResource("GDScript_kpjcp")
 
 [node name="PlayerSprite" type="Sprite2D" parent="."]
+texture_filter = 1
 scale = Vector2(1.5, 1.5625)
 texture = ExtResource("1_xhfnw")
 
 [node name="PlayerCollisionShape" type="CollisionShape2D" parent="."]
+visible = false
 shape = SubResource("RectangleShape2D_kne1u")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+visible = false
+position = Vector2(-15, 9)
+zoom = Vector2(1.5, 1.5)
