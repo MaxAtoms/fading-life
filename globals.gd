@@ -1,6 +1,7 @@
 extends Node
 
 
+
 var _score := 0
 
 var score:
@@ -11,3 +12,4 @@ var score:
 
 func _set_score(value):
 	_score = value
+	

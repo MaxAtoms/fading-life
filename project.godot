@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Ghostwalker"
-run/main_scene="uid://btxopix0urky7"
+run/main_scene="uid://chillchqcf3b2"
 config/features=PackedStringArray("4.4", "Forward Plus")
 
 [autoload]

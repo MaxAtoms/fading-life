@@ -13,6 +13,7 @@ func destroy():
 			if i * i + j * j <= radius * radius:
 				tile_map.set_cell(tile_map.local_to_map(pos) + Vector2i(i, j), 3, Vector2i(0, 0))
 
+	Globals.score += 100
 	queue_free()
 
 
