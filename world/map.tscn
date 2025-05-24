@@ -1,7 +1,7 @@
-[gd_scene load_steps=24 format=4 uid="uid://btxopix0urky7"]
+[gd_scene load_steps=23 format=4 uid="uid://btxopix0urky7"]
 
 [ext_resource type="PackedScene" uid="uid://dtrtqnb5du6sc" path="res://player/Player.tscn" id="2_uvqf1"]
-[ext_resource type="PackedScene" uid="uid://n6ve6fmnboc1" path="res://gameElements/life_orb.tscn" id="3_bxc27"]
+[ext_resource type="PackedScene" uid="uid://tuj7yy2ssj76" path="res://gameElements/life_orb.tscn" id="3_bxc27"]
 [ext_resource type="Texture2D" uid="uid://dnly7udbsy4p" path="res://assets/grass.png" id="5_gfy5m"]
 [ext_resource type="Texture2D" uid="uid://tw6kwtp6usq7" path="res://assets/wasteland.png" id="6_qyd10"]
 [ext_resource type="Shader" uid="uid://ckxxo3vuop3u3" path="res://world/noise.tres" id="7_gfy5m"]
@@ -15,14 +15,34 @@
 [ext_resource type="PackedScene" uid="uid://cc7mqkvromcl5" path="res://gameElements/tree.tscn" id="14_ubff6"]
 [ext_resource type="PackedScene" uid="uid://75x2v354no6u" path="res://gameElements/tree_dead.tscn" id="15_71ikv"]
 
-[sub_resource type="Gradient" id="Gradient_4t333"]
-colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+[sub_resource type="GDScript" id="GDScript_epef7"]
+script/source = "extends Node2D
 
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_k782d"]
-gradient = SubResource("Gradient_4t333")
-fill = 1
-fill_from = Vector2(0.5, 0.5)
-fill_to = Vector2(0.5, 0)
+@export var orb_scene: PackedScene
+@onready var tile_map_layer: TileMapLayer = $ParallaxBackground/ParallaxLayer/TileMapLayer
+
+func _ready() -> void:
+	if not orb_scene:
+		return
+	
+	randomize()
+	
+	var num_orbs = 100
+	var min_x = -1000
+	var min_y = -1000
+	var max_x = 1000
+	var max_y = 1000
+	
+	print(\"\\nGenerating 10 random Vector2 coordinates (useful for Godot nodes):\")
+	for i in range(num_orbs):
+		var random_vector2 = Vector2(randf_range(min_x, max_x), randf_range(min_y, max_y))
+		var orb = orb_scene.instantiate()
+		orb.position = random_vector2
+		add_child(orb)
+		print(\"Vector2 Coordinate %d: %s\" % [i + 1, str(random_vector2)])
+	
+	return
+"
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_k782d"]
 texture = ExtResource("6_qyd10")
@@ -53,16 +73,11 @@ background_mode = 3
 tonemap_mode = 1
 
 [node name="Map" type="Node2D"]
+script = SubResource("GDScript_epef7")
+orb_scene = ExtResource("3_bxc27")
 
 [node name="Player" parent="." instance=ExtResource("2_uvqf1")]
 position = Vector2(597, 280)
-
-[node name="LifeOrb" parent="." instance=ExtResource("3_bxc27")]
-position = Vector2(490, 298)
-
-[node name="PointLight2D" type="PointLight2D" parent="LifeOrb"]
-color = Color(0.73465, 0.637976, 0.257371, 1)
-texture = SubResource("GradientTexture2D_k782d")
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 

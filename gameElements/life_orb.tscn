@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://n6ve6fmnboc1"]
+[gd_scene load_steps=12 format=3 uid="uid://tuj7yy2ssj76"]
 
 [ext_resource type="Script" uid="uid://cuatqwigart2f" path="res://gameElements/life_orb.gd" id="1_5t5e0"]
 [ext_resource type="Texture2D" uid="uid://boccfcf5by8rx" path="res://assets/life_orb_1.png" id="3_jq04s"]
@@ -37,6 +37,15 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_7b4h2"]
 radius = 9.0
 
+[sub_resource type="Gradient" id="Gradient_4t333"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_04b31"]
+gradient = SubResource("Gradient_4t333")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.5, 0)
+
 [node name="LifeOrb" type="Area2D"]
 script = ExtResource("1_5t5e0")
 
@@ -47,5 +56,9 @@ frame_progress = 0.562856
 [node name="LifeOrbCollision" type="CollisionShape2D" parent="."]
 visible = false
 shape = SubResource("CircleShape2D_7b4h2")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+color = Color(0.73465, 0.637976, 0.257371, 1)
+texture = SubResource("GradientTexture2D_04b31")
 
 [connection signal="body_shape_entered" from="." to="." method="_on_body_shape_entered"]
