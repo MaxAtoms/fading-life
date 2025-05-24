@@ -1,18 +1,18 @@
 extends Area2D
 
-@export var life_zone: PackedScene
+@export var radius = 3.2
+@onready var tile_map: TileMapLayer = $"../ParallaxBackground/ParallaxLayer/TileMapLayer"
 
 func _physics_process(delta: float) -> void:
 	$AnimatedSprite2D.play()
 
 func destroy():
 	var pos = global_position
+	for i in range(-radius, radius + 1):
+		for j in range(-radius, radius + 1):
+			if i * i + j * j <= radius * radius:
+				tile_map.set_cell(tile_map.local_to_map(pos) + Vector2i(i, j), 3, Vector2i(0, 0))
 
-	if life_zone:
-		var new_instance = life_zone.instantiate()
-		get_parent().add_child(new_instance)
-		new_instance.global_position = pos
-		
 	queue_free()
 
 

@@ -1,7 +1,6 @@
-[gd_scene load_steps=11 format=3 uid="uid://n6ve6fmnboc1"]
+[gd_scene load_steps=10 format=3 uid="uid://n6ve6fmnboc1"]
 
 [ext_resource type="Script" uid="uid://cuatqwigart2f" path="res://gameElements/life_orb.gd" id="1_5t5e0"]
-[ext_resource type="PackedScene" uid="uid://byjoa77qhi3c2" path="res://gameElements/life_zone.tscn" id="2_jihdh"]
 [ext_resource type="Texture2D" uid="uid://boccfcf5by8rx" path="res://assets/life_orb_1.png" id="3_jq04s"]
 [ext_resource type="Texture2D" uid="uid://bk783avold0te" path="res://assets/life_orb_2.png" id="4_8g12c"]
 [ext_resource type="Texture2D" uid="uid://jqr1mrcxmcc5" path="res://assets/life_orb_3.png" id="5_4dnh1"]
@@ -40,7 +39,6 @@ radius = 9.0
 
 [node name="LifeOrb" type="Area2D"]
 script = ExtResource("1_5t5e0")
-life_zone = ExtResource("2_jihdh")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_8jl7h")
