@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://bdfr453aq51mj"]
+
+[ext_resource type="Texture2D" uid="uid://62oc6yh53w4l" path="res://assets/flower_1.png" id="1_fy85x"]
+[ext_resource type="Texture2D" uid="uid://c8ak3f8rm4sx" path="res://assets/flower_2.png" id="2_dr8fp"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_mlyh8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_fy85x")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_dr8fp")
+}],
+"loop": true,
+"name": &"default",
+"speed": 1.0
+}]
+
+[node name="Flower" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_mlyh8")
+frame_progress = 0.0580145

@@ -110,7 +110,8 @@ func _set_health(value):
 		health = value
 		healthbar.value = value
 	else:
-		print(\"game over\")
+		var game_over = load(\"res://ui/game_over.tscn\")
+		get_tree().call_deferred(\"change_scene_to_packed\", game_over)
 
 func _on_decay_timeout() -> void:
 	health -= health_decay
