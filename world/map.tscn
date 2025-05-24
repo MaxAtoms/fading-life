@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=4 uid="uid://btxopix0urky7"]
+[gd_scene load_steps=17 format=4 uid="uid://btxopix0urky7"]
 
 [ext_resource type="Texture2D" uid="uid://cqcne212u6vhs" path="res://world/grey.png" id="2_bxc27"]
 [ext_resource type="PackedScene" uid="uid://dtrtqnb5du6sc" path="res://player/Player.tscn" id="2_uvqf1"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://dfqlndqcfokmi" path="res://gameElements/sun.png" id="5_qyd10"]
 [ext_resource type="Texture2D" uid="uid://tw6kwtp6usq7" path="res://assets/wasteland.png" id="6_qyd10"]
 [ext_resource type="Shader" uid="uid://ckxxo3vuop3u3" path="res://world/noise.tres" id="7_gfy5m"]
+[ext_resource type="AudioStream" uid="uid://26aunak4nbeu" path="res://assets/Dawn - slow - scary.mp3" id="8_4t333"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gfy5m"]
 texture = ExtResource("4_g2t10")
@@ -73,3 +74,8 @@ offset_bottom = 650.0
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_gfy5m")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_4t333")
+volume_db = 5.0
+autoplay = true
