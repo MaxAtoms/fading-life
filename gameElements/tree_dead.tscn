@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://75x2v354no6u"]
+
+[ext_resource type="Texture2D" uid="uid://b6umq6ingplf7" path="res://assets/tree_dead.png" id="1_w1vcp"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_brvp5"]
+
+[node name="TreeDead" type="StaticBody2D"]
+
+[node name="TreeDeadSprite" type="Sprite2D" parent="."]
+texture = ExtResource("1_w1vcp")
+
+[node name="TreeDeadCollission" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(-1, 0)
+scale = Vector2(0.583886, 0.551519)
+shape = SubResource("CapsuleShape2D_brvp5")

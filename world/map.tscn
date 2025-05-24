@@ -1,6 +1,5 @@
-[gd_scene load_steps=19 format=4 uid="uid://btxopix0urky7"]
+[gd_scene load_steps=26 format=4 uid="uid://btxopix0urky7"]
 
-[ext_resource type="Texture2D" uid="uid://cqcne212u6vhs" path="res://world/grey.png" id="2_bxc27"]
 [ext_resource type="PackedScene" uid="uid://dtrtqnb5du6sc" path="res://player/Player.tscn" id="2_uvqf1"]
 [ext_resource type="PackedScene" uid="uid://n6ve6fmnboc1" path="res://gameElements/life_orb.tscn" id="3_bxc27"]
 [ext_resource type="Texture2D" uid="uid://dsq1gc40a1bgs" path="res://gameElements/life_zone.png" id="4_g2t10"]
@@ -8,6 +7,14 @@
 [ext_resource type="Texture2D" uid="uid://tw6kwtp6usq7" path="res://assets/wasteland.png" id="6_qyd10"]
 [ext_resource type="Shader" uid="uid://ckxxo3vuop3u3" path="res://world/noise.tres" id="7_gfy5m"]
 [ext_resource type="AudioStream" uid="uid://26aunak4nbeu" path="res://assets/Dawn - slow - scary.mp3" id="8_4t333"]
+[ext_resource type="PackedScene" uid="uid://cxhvbev3iyiup" path="res://gameElements/stone_1.tscn" id="8_28vak"]
+[ext_resource type="PackedScene" uid="uid://cc2rmcnq1r0nu" path="res://gameElements/stone_2.tscn" id="9_4pkq1"]
+[ext_resource type="PackedScene" uid="uid://cvwh3ajrewel4" path="res://gameElements/stone_3.tscn" id="10_d83ck"]
+[ext_resource type="PackedScene" uid="uid://b03rq3s804drh" path="res://gameElements/stone_light_1.tscn" id="11_wq5fo"]
+[ext_resource type="PackedScene" uid="uid://uie8uhgd5ag0" path="res://gameElements/stone_light_2.tscn" id="12_gfcc3"]
+[ext_resource type="PackedScene" uid="uid://8rvf7ev0q3qv" path="res://gameElements/stone_light_3.tscn" id="13_o88cg"]
+[ext_resource type="PackedScene" uid="uid://cc7mqkvromcl5" path="res://gameElements/tree.tscn" id="14_ubff6"]
+[ext_resource type="PackedScene" uid="uid://75x2v354no6u" path="res://gameElements/tree_dead.tscn" id="15_71ikv"]
 
 [sub_resource type="Gradient" id="Gradient_4t333"]
 colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
@@ -53,11 +60,6 @@ tonemap_mode = 1
 
 [node name="Map" type="Node2D"]
 
-[node name="Background" type="Sprite2D" parent="."]
-visible = false
-position = Vector2(551, 540)
-texture = ExtResource("2_bxc27")
-
 [node name="Player" parent="." instance=ExtResource("2_uvqf1")]
 position = Vector2(597, 280)
 
@@ -96,3 +98,27 @@ autoplay = true
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 position = Vector2(-1, 0)
 color = Color(0.552956, 0.552956, 0.552956, 1)
+
+[node name="Stone1" parent="." instance=ExtResource("8_28vak")]
+position = Vector2(447, 265)
+
+[node name="Stone2" parent="." instance=ExtResource("9_4pkq1")]
+position = Vector2(433, 309)
+
+[node name="Stone3" parent="." instance=ExtResource("10_d83ck")]
+position = Vector2(467, 348)
+
+[node name="StoneLight1" parent="." instance=ExtResource("11_wq5fo")]
+position = Vector2(534, 360)
+
+[node name="StoneLight2" parent="." instance=ExtResource("12_gfcc3")]
+position = Vector2(562, 327)
+
+[node name="StoneLight3" parent="." instance=ExtResource("13_o88cg")]
+position = Vector2(501, 246)
+
+[node name="Tree" parent="." instance=ExtResource("14_ubff6")]
+position = Vector2(537, 215)
+
+[node name="TreeDead" parent="." instance=ExtResource("15_71ikv")]
+position = Vector2(598, 223)

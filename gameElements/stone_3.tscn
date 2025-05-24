@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://cvwh3ajrewel4"]
+
+[ext_resource type="Texture2D" uid="uid://u64ehlm3idww" path="res://assets/stone3.png" id="1_g6g35"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ioigg"]
+
+[node name="Stone3" type="StaticBody2D"]
+
+[node name="StoneSprite" type="Sprite2D" parent="."]
+texture = ExtResource("1_g6g35")
+
+[node name="StoneCollission" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(0, 1)
+scale = Vector2(0.686043, -0.652573)
+shape = SubResource("CircleShape2D_ioigg")
