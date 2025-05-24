@@ -14,6 +14,10 @@ config/name="Ghostwalker"
 run/main_scene="uid://btxopix0urky7"
 config/features=PackedStringArray("4.4", "Forward Plus")
 
+[autoload]
+
+Globals="*res://globals.gd"
+
 [display]
 
 window/stretch/mode="canvas_items"

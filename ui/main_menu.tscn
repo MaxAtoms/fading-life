@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://chillchqcf3b2"]
+[gd_scene load_steps=4 format=3 uid="uid://chillchqcf3b2"]
 
 [ext_resource type="Script" uid="uid://bev1tjhq85d67" path="res://ui/start_button.gd" id="1_t7e0r"]
 [ext_resource type="Script" uid="uid://cpjy3b5jn5aqw" path="res://ui/quit_button.gd" id="2_0dkrt"]
+[ext_resource type="AudioStream" uid="uid://26aunak4nbeu" path="res://assets/Dawn - slow - scary.mp3" id="3_wk0pr"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -11,27 +12,46 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 357.0
+offset_top = 42.0
+offset_right = 806.0
+offset_bottom = 145.0
+theme_override_colors/font_color = Color(0.517647, 0.431373, 0, 1)
+theme_override_font_sizes/font_size = 75
+text = "Last Journey"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 0
-offset_left = 386.0
-offset_top = 98.0
-offset_right = 482.0
-offset_bottom = 199.0
-scale = Vector2(4, 4)
+offset_left = 432.0
+offset_top = 166.0
+offset_right = 712.0
+offset_bottom = 405.0
 
 [node name="StartButton" type="Button" parent="VBoxContainer"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 50
 text = "Start Game"
 script = ExtResource("1_t7e0r")
 
 [node name="WhateverButton" type="Button" parent="VBoxContainer"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 50
 text = "Booom"
 
 [node name="QuitButton" type="Button" parent="VBoxContainer"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 50
 text = "Quit"
 script = ExtResource("2_0dkrt")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_wk0pr")
+volume_db = 5.0
+autoplay = true
 
 [connection signal="pressed" from="VBoxContainer/StartButton" to="VBoxContainer/StartButton" method="_on_pressed"]
 [connection signal="pressed" from="VBoxContainer/QuitButton" to="VBoxContainer/QuitButton" method="_on_pressed"]
