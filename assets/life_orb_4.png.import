@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cthyainwqokcr"
-path="res://.godot/imported/player_up_8.png-fc0bcded854440ee6f7541b8c2e14b73.ctex"
+uid="uid://b1a6r6tq3wirb"
+path="res://.godot/imported/life_orb_4.png-95dbb057df36e9287c1be7b192608000.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/player_up_8.png"
-dest_files=["res://.godot/imported/player_up_8.png-fc0bcded854440ee6f7541b8c2e14b73.ctex"]
+source_file="res://assets/life_orb_4.png"
+dest_files=["res://.godot/imported/life_orb_4.png-95dbb057df36e9287c1be7b192608000.ctex"]
 
 [params]
 
