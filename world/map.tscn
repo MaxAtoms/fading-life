@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=4 uid="uid://btxopix0urky7"]
+[gd_scene load_steps=19 format=4 uid="uid://btxopix0urky7"]
 
 [ext_resource type="Texture2D" uid="uid://cqcne212u6vhs" path="res://world/grey.png" id="2_bxc27"]
 [ext_resource type="PackedScene" uid="uid://dtrtqnb5du6sc" path="res://player/Player.tscn" id="2_uvqf1"]
@@ -8,6 +8,15 @@
 [ext_resource type="Texture2D" uid="uid://tw6kwtp6usq7" path="res://assets/wasteland.png" id="6_qyd10"]
 [ext_resource type="Shader" uid="uid://ckxxo3vuop3u3" path="res://world/noise.tres" id="7_gfy5m"]
 [ext_resource type="AudioStream" uid="uid://26aunak4nbeu" path="res://assets/Dawn - slow - scary.mp3" id="8_4t333"]
+
+[sub_resource type="Gradient" id="Gradient_4t333"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_k782d"]
+gradient = SubResource("Gradient_4t333")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.5, 0)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gfy5m"]
 texture = ExtResource("4_g2t10")
@@ -55,6 +64,10 @@ position = Vector2(597, 280)
 [node name="LifeOrb" parent="." instance=ExtResource("3_bxc27")]
 position = Vector2(490, 298)
 
+[node name="PointLight2D" type="PointLight2D" parent="LifeOrb"]
+color = Color(0.73465, 0.637976, 0.257371, 1)
+texture = SubResource("GradientTexture2D_k782d")
+
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
@@ -79,3 +92,7 @@ environment = SubResource("Environment_gfy5m")
 stream = ExtResource("8_4t333")
 volume_db = 5.0
 autoplay = true
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+position = Vector2(-1, 0)
+color = Color(0.552956, 0.552956, 0.552956, 1)

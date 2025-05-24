@@ -2,6 +2,8 @@ extends Area2D
 
 @export var life_zone: PackedScene
 
+func _physics_process(delta: float) -> void:
+	$AnimatedSprite2D.play()
 
 func destroy():
 	var pos = global_position

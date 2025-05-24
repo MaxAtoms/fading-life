@@ -1,8 +1,39 @@
-[gd_scene load_steps=5 format=3 uid="uid://n6ve6fmnboc1"]
+[gd_scene load_steps=11 format=3 uid="uid://n6ve6fmnboc1"]
 
 [ext_resource type="Script" uid="uid://cuatqwigart2f" path="res://gameElements/life_orb.gd" id="1_5t5e0"]
-[ext_resource type="Texture2D" uid="uid://dfqlndqcfokmi" path="res://gameElements/sun.png" id="1_ek21n"]
 [ext_resource type="PackedScene" uid="uid://byjoa77qhi3c2" path="res://gameElements/life_zone.tscn" id="2_jihdh"]
+[ext_resource type="Texture2D" uid="uid://coxc1o37vw7ju" path="res://assets/life_orb_1.png" id="3_jq04s"]
+[ext_resource type="Texture2D" uid="uid://cj8khvdccqvvp" path="res://assets/life_orb_2.png" id="4_8g12c"]
+[ext_resource type="Texture2D" uid="uid://baekrh0oejws7" path="res://assets/life_orb_3.png" id="5_4dnh1"]
+[ext_resource type="Texture2D" uid="uid://ctqsu62o3wa65" path="res://assets/life_orb_4.png" id="6_ap1t4"]
+[ext_resource type="Texture2D" uid="uid://cy8e5cm24j0br" path="res://assets/life_orb_5.png" id="7_8lc22"]
+[ext_resource type="Texture2D" uid="uid://b2n20wogtnx4r" path="res://assets/life_orb_7.png" id="9_rv8h6"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8jl7h"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_jq04s")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_8g12c")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_4dnh1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_ap1t4")
+}, {
+"duration": 2.0,
+"texture": ExtResource("7_8lc22")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_rv8h6")
+}],
+"loop": true,
+"name": &"default",
+"speed": 3.0
+}]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_7b4h2"]
 radius = 9.0
@@ -11,9 +42,9 @@ radius = 9.0
 script = ExtResource("1_5t5e0")
 life_zone = ExtResource("2_jihdh")
 
-[node name="LifeOrbSprite" type="Sprite2D" parent="."]
-texture_filter = 1
-texture = ExtResource("1_ek21n")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_8jl7h")
+frame_progress = 0.562856
 
 [node name="LifeOrbCollision" type="CollisionShape2D" parent="."]
 visible = false
