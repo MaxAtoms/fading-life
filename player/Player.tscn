@@ -5,10 +5,14 @@
 [sub_resource type="GDScript" id="GDScript_kpjcp"]
 script/source = "extends CharacterBody2D
 
+@onready var worldTimer = $GhostworldTimeout
+
 var speed = 6000
+var change = true
 
 func _physics_process(delta):
 	player_movement(delta)
+	
 
 
 func player_movement(delta):
@@ -35,12 +39,14 @@ func player_movement(delta):
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kne1u"]
 size = Vector2(24, 25)
 
-[node name="Node2D" type="CharacterBody2D"]
+[node name="Player" type="CharacterBody2D"]
 script = SubResource("GDScript_kpjcp")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="PlayerSprite" type="Sprite2D" parent="."]
 scale = Vector2(1.5, 1.5625)
 texture = ExtResource("1_xhfnw")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="PlayerCollisionShape" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_kne1u")
+
+[node name="Camera2D" type="Camera2D" parent="."]
