@@ -1,5 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://byjoa77qhi3c2"]
+[gd_scene load_steps=4 format=3 uid="uid://byjoa77qhi3c2"]
 
+[ext_resource type="Script" uid="uid://dgcveiffi1f8d" path="res://gameElements/life_zone.gd" id="1_mcvpk"]
 [ext_resource type="Texture2D" uid="uid://dsq1gc40a1bgs" path="res://gameElements/life_zone.png" id="1_onbc5"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_mcvpk"]
@@ -7,6 +8,8 @@ radius = 18.0278
 
 [node name="LifeZone" type="Area2D"]
 visibility_layer = 2
+scale = Vector2(4, 4)
+script = ExtResource("1_mcvpk")
 
 [node name="LifeZoneSprite" type="Sprite2D" parent="."]
 texture_filter = 1
@@ -17,3 +20,10 @@ texture = ExtResource("1_onbc5")
 visible = false
 texture_filter = 1
 shape = SubResource("CircleShape2D_mcvpk")
+
+[node name="HealTimer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="body_shape_entered" from="." to="." method="_on_body_shape_entered"]
+[connection signal="body_shape_exited" from="." to="." method="_on_body_shape_exited"]
+[connection signal="timeout" from="HealTimer" to="." method="_on_heal_timer_timeout"]
