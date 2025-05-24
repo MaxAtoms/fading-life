@@ -44,9 +44,7 @@
 [sub_resource type="GDScript" id="GDScript_kpjcp"]
 script/source = "extends CharacterBody2D
 
-@export var max_health = 100
-@export var max_speed = 3000
-@export var health_decay = 2
+@export var decay: int = 2
 @onready var timer = $Decay
 @onready var healthbar: ProgressBar = $Healthbar
 
@@ -63,8 +61,12 @@ var health = max_health: set = _set_health
 
 func _ready() -> void:
 	if healthbar:
+		healthbar.max_value = max_health
+		healthbar.min_value = 0
 		healthbar.value = max_health
-
+		healthbar.step = 1
+		
+		
 func _physics_process(delta):
 	player_movement(delta)
 
@@ -106,16 +108,18 @@ func player_movement(delta):
 	move_and_slide()
 
 func _set_health(value):
+	print(\"HP: \", health)
 	if value >= 0:
 		health = value
-		healthbar.value = value
+		if healthbar:
+			healthbar.value = health
 	else:
 		print(\"game over\")
 
 func _on_decay_timeout() -> void:
-	health -= health_decay
-	print(\"HP: \", health)
+	health -= decay
 
+	
 func heal(amount: float):
 	health = min(health + amount, max_health)
 
@@ -129,181 +133,29 @@ func start_timer():
 		timer.paused = false
 "
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_u8vxv"]
-radius = 5.0
-height = 18.0
-
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ulp21"]
 bg_color = Color(0, 0, 0, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3c3w1"]
 bg_color = Color(1, 1, 1, 1)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_0hmdb"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("2_lhjxl")
-}, {
-"duration": 1.0,
-"texture": ExtResource("3_y2u3w")
-}, {
-"duration": 1.0,
-"texture": ExtResource("4_uyl0s")
-}, {
-"duration": 1.0,
-"texture": ExtResource("5_vud74")
-}, {
-"duration": 1.0,
-"texture": ExtResource("6_8cy8x")
-}, {
-"duration": 1.0,
-"texture": ExtResource("7_610ub")
-}, {
-"duration": 1.0,
-"texture": ExtResource("8_ayguc")
-}, {
-"duration": 1.0,
-"texture": ExtResource("9_t7u8x")
-}],
-"loop": true,
-"name": &"down",
-"speed": 10.0
-}, {
-"frames": [{
-"duration": 4.0,
-"texture": ExtResource("9_lhjxl")
-}, {
-"duration": 4.0,
-"texture": ExtResource("10_y2u3w")
-}],
-"loop": true,
-"name": &"idle_down",
-"speed": 10.0
-}, {
-"frames": [{
-"duration": 4.0,
-"texture": ExtResource("11_8cy8x")
-}, {
-"duration": 4.0,
-"texture": ExtResource("12_610ub")
-}],
-"loop": true,
-"name": &"idle_left",
-"speed": 10.0
-}, {
-"frames": [{
-"duration": 4.0,
-"texture": ExtResource("13_ayguc")
-}, {
-"duration": 4.0,
-"texture": ExtResource("14_t7u8x")
-}],
-"loop": true,
-"name": &"idle_right",
-"speed": 10.0
-}, {
-"frames": [{
-"duration": 4.0,
-"texture": ExtResource("11_uyl0s")
-}, {
-"duration": 4.0,
-"texture": ExtResource("12_vud74")
-}],
-"loop": true,
-"name": &"idle_up",
-"speed": 10.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("10_lnwue")
-}, {
-"duration": 1.0,
-"texture": ExtResource("11_7tnb4")
-}, {
-"duration": 1.0,
-"texture": ExtResource("12_2q4k2")
-}, {
-"duration": 1.0,
-"texture": ExtResource("13_w36ex")
-}, {
-"duration": 1.0,
-"texture": ExtResource("14_7wro5")
-}, {
-"duration": 1.0,
-"texture": ExtResource("15_u3bl4")
-}, {
-"duration": 1.0,
-"texture": ExtResource("16_wpul2")
-}, {
-"duration": 1.0,
-"texture": ExtResource("17_pcftw")
-}],
-"loop": true,
-"name": &"left",
-"speed": 10.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("18_cayk5")
-}, {
-"duration": 1.0,
-"texture": ExtResource("19_wqfsd")
-}, {
-"duration": 1.0,
-"texture": ExtResource("20_wpo5q")
-}, {
-"duration": 1.0,
-"texture": ExtResource("21_22tms")
-}, {
-"duration": 1.0,
-"texture": ExtResource("22_0a0r0")
-}, {
-"duration": 1.0,
-"texture": ExtResource("23_y5372")
-}, {
-"duration": 1.0,
-"texture": ExtResource("24_nckww")
-}, {
-"duration": 1.0,
-"texture": ExtResource("25_eftk4")
-}],
-"loop": true,
-"name": &"right",
-"speed": 10.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("26_ysdtf")
-}, {
-"duration": 1.0,
-"texture": ExtResource("27_x73r6")
-}, {
-"duration": 1.0,
-"texture": ExtResource("28_16d2w")
-}, {
-"duration": 1.0,
-"texture": ExtResource("29_u8534")
-}, {
-"duration": 1.0,
-"texture": ExtResource("30_fm4ui")
-}, {
-"duration": 1.0,
-"texture": ExtResource("31_mvo4i")
-}, {
-"duration": 1.0,
-"texture": ExtResource("32_enu3q")
-}, {
-"duration": 1.0,
-"texture": ExtResource("33_gfvao")
-}],
-"loop": true,
-"name": &"up",
-"speed": 10.0
-}]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kne1u"]
+size = Vector2(24, 25)
 
 [node name="Player" type="CharacterBody2D"]
 script = SubResource("GDScript_kpjcp")
+decay = 3
+
+[node name="Healthbar" type="ProgressBar" parent="."]
+offset_left = -132.0
+offset_top = -48.0
+offset_right = -128.0
+offset_bottom = -21.0
+scale = Vector2(65.92, 1)
+theme_override_styles/background = SubResource("StyleBoxFlat_ulp21")
+theme_override_styles/fill = SubResource("StyleBoxFlat_3c3w1")
+step = 1.0
+show_percentage = false
 
 [node name="PlayerSprite" type="Sprite2D" parent="."]
 z_index = 1
@@ -320,23 +172,5 @@ zoom = Vector2(3, 3)
 [node name="Decay" type="Timer" parent="."]
 wait_time = 0.5
 autostart = true
-
-[node name="Healthbar" type="ProgressBar" parent="."]
-visible = false
-offset_left = -132.0
-offset_top = -48.0
-offset_right = -128.0
-offset_bottom = -21.0
-scale = Vector2(65.92, 1)
-theme_override_styles/background = SubResource("StyleBoxFlat_ulp21")
-theme_override_styles/fill = SubResource("StyleBoxFlat_3c3w1")
-step = 1.0
-value = 50.0
-show_percentage = false
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-z_index = 1
-sprite_frames = SubResource("SpriteFrames_0hmdb")
-animation = &"left"
 
 [connection signal="timeout" from="Decay" to="." method="_on_decay_timeout"]
