@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://n6ve6fmnboc1" path="res://gameElements/life_orb.tscn" id="3_bxc27"]
 [ext_resource type="Texture2D" uid="uid://dsq1gc40a1bgs" path="res://gameElements/life_zone.png" id="4_g2t10"]
 [ext_resource type="Texture2D" uid="uid://dfqlndqcfokmi" path="res://gameElements/sun.png" id="5_qyd10"]
-[ext_resource type="Texture2D" uid="uid://0ak58ykdxmeb" path="res://assets/wasteland.png" id="6_qyd10"]
+[ext_resource type="Texture2D" uid="uid://tw6kwtp6usq7" path="res://assets/wasteland.png" id="6_qyd10"]
 [ext_resource type="Shader" uid="uid://ckxxo3vuop3u3" path="res://world/noise.tres" id="7_gfy5m"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gfy5m"]
@@ -50,7 +50,6 @@ texture = ExtResource("2_bxc27")
 
 [node name="Player" parent="." instance=ExtResource("2_uvqf1")]
 position = Vector2(597, 280)
-decay = 0
 
 [node name="LifeOrb" parent="." instance=ExtResource("3_bxc27")]
 position = Vector2(490, 298)

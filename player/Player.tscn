@@ -1,16 +1,48 @@
-[gd_scene load_steps=6 format=3 uid="uid://dtrtqnb5du6sc"]
+[gd_scene load_steps=39 format=3 uid="uid://dtrtqnb5du6sc"]
 
-[ext_resource type="Texture2D" uid="uid://n7s5h3mest5t" path="res://player/Player.png" id="1_xhfnw"]
+[ext_resource type="Texture2D" uid="uid://mjyuhatgdhs7" path="res://assets/player.png" id="1_u8vxv"]
+[ext_resource type="Texture2D" uid="uid://ksvsi3gwadnl" path="res://assets/player_down_1.png" id="2_lhjxl"]
+[ext_resource type="Texture2D" uid="uid://lwgb2s5y0xuc" path="res://assets/player_down_2.png" id="3_y2u3w"]
+[ext_resource type="Texture2D" uid="uid://ckxgj1wsid1ke" path="res://assets/player_down_3.png" id="4_uyl0s"]
+[ext_resource type="Texture2D" uid="uid://dp8el3hc3rayj" path="res://assets/player_down_4.png" id="5_vud74"]
+[ext_resource type="Texture2D" uid="uid://bg26mqbabs321" path="res://assets/player_down_5.png" id="6_8cy8x"]
+[ext_resource type="Texture2D" uid="uid://dqxqsp7ys3ykq" path="res://assets/player_down_6.png" id="7_610ub"]
+[ext_resource type="Texture2D" uid="uid://4bebwej38wpu" path="res://assets/player_down_7.png" id="8_ayguc"]
+[ext_resource type="Texture2D" uid="uid://b50kjmxsmcfvm" path="res://assets/player_down_8.png" id="9_t7u8x"]
+[ext_resource type="Texture2D" uid="uid://5hgjiexgoaks" path="res://assets/player_left_1.png" id="10_lnwue"]
+[ext_resource type="Texture2D" uid="uid://dytfj7x4ytgk7" path="res://assets/player_left_2.png" id="11_7tnb4"]
+[ext_resource type="Texture2D" uid="uid://dy43gjy66cmgu" path="res://assets/player_left_3.png" id="12_2q4k2"]
+[ext_resource type="Texture2D" uid="uid://b6n8u378mirxw" path="res://assets/player_left_4.png" id="13_w36ex"]
+[ext_resource type="Texture2D" uid="uid://ci6pfs0ovj7yb" path="res://assets/player_left_5.png" id="14_7wro5"]
+[ext_resource type="Texture2D" uid="uid://b3nni5knfky4b" path="res://assets/player_left_6.png" id="15_u3bl4"]
+[ext_resource type="Texture2D" uid="uid://jfpsaceuokf6" path="res://assets/player_left_7.png" id="16_wpul2"]
+[ext_resource type="Texture2D" uid="uid://ciw4fwgox8p4g" path="res://assets/player_left_8.png" id="17_pcftw"]
+[ext_resource type="Texture2D" uid="uid://4tau88mt1w87" path="res://assets/player_right_1.png" id="18_cayk5"]
+[ext_resource type="Texture2D" uid="uid://cfnhyeburm3kl" path="res://assets/player_right_2.png" id="19_wqfsd"]
+[ext_resource type="Texture2D" uid="uid://xbee8jwd3uy8" path="res://assets/player_right_3.png" id="20_wpo5q"]
+[ext_resource type="Texture2D" uid="uid://2okefu430rbj" path="res://assets/player_right_4.png" id="21_22tms"]
+[ext_resource type="Texture2D" uid="uid://bycvw6v5nlpmg" path="res://assets/player_right_5.png" id="22_0a0r0"]
+[ext_resource type="Texture2D" uid="uid://bjfurstrm3qa6" path="res://assets/player_right_6.png" id="23_y5372"]
+[ext_resource type="Texture2D" uid="uid://b7qaae28rkjvh" path="res://assets/player_right_7.png" id="24_nckww"]
+[ext_resource type="Texture2D" uid="uid://c36dh5ia33jym" path="res://assets/player_right_8.png" id="25_eftk4"]
+[ext_resource type="Texture2D" uid="uid://b4e3o4mh672k1" path="res://assets/player_up_1.png" id="26_ysdtf"]
+[ext_resource type="Texture2D" uid="uid://cx1vk75gt3ba" path="res://assets/player_up_2.png" id="27_x73r6"]
+[ext_resource type="Texture2D" uid="uid://b0k8faih8tclt" path="res://assets/player_up_3.png" id="28_16d2w"]
+[ext_resource type="Texture2D" uid="uid://da7miamc1uuv3" path="res://assets/player_up_4.png" id="29_u8534"]
+[ext_resource type="Texture2D" uid="uid://de08jcywuvr7e" path="res://assets/player_up_5.png" id="30_fm4ui"]
+[ext_resource type="Texture2D" uid="uid://bed3fe4e15kdw" path="res://assets/player_up_6.png" id="31_mvo4i"]
+[ext_resource type="Texture2D" uid="uid://ccjeurmhhgw1f" path="res://assets/player_up_7.png" id="32_enu3q"]
+[ext_resource type="Texture2D" uid="uid://cckgqyn08k4kf" path="res://assets/player_up_8.png" id="33_gfvao"]
 
 [sub_resource type="GDScript" id="GDScript_kpjcp"]
 script/source = "extends CharacterBody2D
 
-@export var decay: int
+@export var decay: int = 2
 @onready var timer = $Decay
 @onready var healthbar: ProgressBar = $Healthbar
 
 
-var speed = 6000
+var speed = 3000
 var change = true
 var health = 100 : set = _set_health
 var max_health = 100
@@ -44,6 +76,19 @@ func player_movement(delta):
 		
 	if velocity.length() > 0:
 		velocity = velocity.normalized() * speed * delta
+	
+	$AnimatedSprite2D.play()
+		
+	if velocity.x > 0:
+		$AnimatedSprite2D.animation = \"right\"
+	elif velocity.x < 0:
+		$AnimatedSprite2D.animation = \"left\"
+	elif velocity.y > 0:
+		$AnimatedSprite2D.animation = \"down\"
+	elif velocity.y < 0:
+		$AnimatedSprite2D.animation = \"up\"
+	else:
+		$AnimatedSprite2D.animation = \"default\"
 	
 	move_and_slide()
 
@@ -80,14 +125,140 @@ bg_color = Color(0, 0, 0, 1)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3c3w1"]
 bg_color = Color(1, 1, 1, 1)
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_0hmdb"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_u8vxv")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_lhjxl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_y2u3w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_uyl0s")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_vud74")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_8cy8x")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_610ub")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_ayguc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_t7u8x")
+}],
+"loop": true,
+"name": &"down",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("10_lnwue")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_7tnb4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_2q4k2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_w36ex")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_7wro5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_u3bl4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_wpul2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_pcftw")
+}],
+"loop": true,
+"name": &"left",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("18_cayk5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_wqfsd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_wpo5q")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_22tms")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_0a0r0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_y5372")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_nckww")
+}, {
+"duration": 1.0,
+"texture": ExtResource("25_eftk4")
+}],
+"loop": true,
+"name": &"right",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("26_ysdtf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("27_x73r6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("28_16d2w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("29_u8534")
+}, {
+"duration": 1.0,
+"texture": ExtResource("30_fm4ui")
+}, {
+"duration": 1.0,
+"texture": ExtResource("31_mvo4i")
+}, {
+"duration": 1.0,
+"texture": ExtResource("32_enu3q")
+}, {
+"duration": 1.0,
+"texture": ExtResource("33_gfvao")
+}],
+"loop": true,
+"name": &"up",
+"speed": 10.0
+}]
+
 [node name="Player" type="CharacterBody2D"]
 script = SubResource("GDScript_kpjcp")
-decay = 2
+decay = 3
 
 [node name="PlayerSprite" type="Sprite2D" parent="."]
 z_index = 1
 texture_filter = 1
-texture = ExtResource("1_xhfnw")
 
 [node name="PlayerCollisionShape" type="CollisionShape2D" parent="."]
 visible = false
@@ -113,5 +284,10 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_3c3w1")
 step = 1.0
 value = 50.0
 show_percentage = false
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+z_index = 1
+sprite_frames = SubResource("SpriteFrames_0hmdb")
+animation = &"up"
 
 [connection signal="timeout" from="Decay" to="." method="_on_decay_timeout"]
