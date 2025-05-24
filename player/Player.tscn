@@ -87,7 +87,6 @@ decay = 2
 [node name="PlayerSprite" type="Sprite2D" parent="."]
 z_index = 1
 texture_filter = 1
-scale = Vector2(1.5, 1.5625)
 texture = ExtResource("1_xhfnw")
 
 [node name="PlayerCollisionShape" type="CollisionShape2D" parent="."]
@@ -97,7 +96,7 @@ shape = SubResource("RectangleShape2D_kne1u")
 [node name="Camera2D" type="Camera2D" parent="."]
 visible = false
 position = Vector2(-15, 9)
-zoom = Vector2(1.5, 1.5)
+zoom = Vector2(3, 3)
 
 [node name="Decay" type="Timer" parent="."]
 wait_time = 0.5
