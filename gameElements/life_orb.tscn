@@ -1,11 +1,15 @@
-[gd_scene load_steps=3 format=3 uid="uid://n6ve6fmnboc1"]
+[gd_scene load_steps=5 format=3 uid="uid://n6ve6fmnboc1"]
 
+[ext_resource type="Script" uid="uid://cuatqwigart2f" path="res://gameElements/life_orb.gd" id="1_5t5e0"]
 [ext_resource type="Texture2D" uid="uid://dfqlndqcfokmi" path="res://gameElements/sun.png" id="1_ek21n"]
+[ext_resource type="PackedScene" uid="uid://byjoa77qhi3c2" path="res://gameElements/life_zone.tscn" id="2_jihdh"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_7b4h2"]
 radius = 9.0
 
 [node name="LifeOrb" type="Area2D"]
+script = ExtResource("1_5t5e0")
+life_zone = ExtResource("2_jihdh")
 
 [node name="LifeOrbSprite" type="Sprite2D" parent="."]
 texture_filter = 1
@@ -14,3 +18,5 @@ texture = ExtResource("1_ek21n")
 [node name="LifeOrbCollision" type="CollisionShape2D" parent="."]
 visible = false
 shape = SubResource("CircleShape2D_7b4h2")
+
+[connection signal="body_shape_entered" from="." to="." method="_on_body_shape_entered"]
