@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://dtrtqnb5du6sc" path="res://player/Player.tscn" id="2_uvqf1"]
 [ext_resource type="Texture2D" uid="uid://b5wmobjij573d" path="res://assets/grass_sheet.png" id="3_28vak"]
-[ext_resource type="PackedScene" uid="uid://n6ve6fmnboc1" path="res://gameElements/life_orb.tscn" id="3_bxc27"]
+[ext_resource type="PackedScene" uid="uid://tuj7yy2ssj76" path="res://gameElements/life_orb.tscn" id="3_bxc27"]
 [ext_resource type="Texture2D" uid="uid://dnly7udbsy4p" path="res://assets/grass.png" id="5_gfy5m"]
 [ext_resource type="Texture2D" uid="uid://tw6kwtp6usq7" path="res://assets/wasteland.png" id="6_qyd10"]
 [ext_resource type="Shader" uid="uid://ckxxo3vuop3u3" path="res://world/noise.tres" id="7_gfy5m"]
