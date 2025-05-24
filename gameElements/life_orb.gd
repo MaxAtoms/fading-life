@@ -8,12 +8,14 @@ func _physics_process(delta: float) -> void:
 
 func destroy():
 	var pos = global_position
+	var positions = []
 	for i in range(-radius, radius + 1):
 		for j in range(-radius, radius + 1):
 			if i * i + j * j <= radius * radius:
-				tile_map.set_cell(tile_map.local_to_map(pos) + Vector2i(i, j), 3, Vector2i(0, 0))
+				positions.append(tile_map.local_to_map(pos) + Vector2i(i, j))
 
 	Globals.score += 100
+	tile_map.set_cells_terrain_connect(positions, 0, 0)
 	queue_free()
 
 
