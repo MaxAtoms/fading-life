@@ -43,7 +43,11 @@ func activate():
 	grass_tile_map.set_cells_terrain_connect(grass_positions, GRASS_TERRAIN_SET_ID, GRASS_TERRAIN_ID, false)
 	for pos in object_positions:
 		object_tile_map.set_cell(pos, ALIVE_OBJECT_ID, object_tile_map.get_cell_atlas_coords(pos))
-	Globals.score += score
+
+	var parent = get_parent()
+	if parent.name == "Map":
+		parent.score += score
+
 	active = true
 	visible = false
 	decay_timer.start(decay_delay)
@@ -78,3 +82,7 @@ func _on_life_orb_timer() -> void:
 			object_tile_map.set_cell(pos, DEAD_OBJECT_ID, object_tile_map.get_cell_atlas_coords(pos))
 		decay_timer.stop()
 		queue_free()
+
+
+func _on_tree_entered() -> void:
+	pass # Replace with function body.

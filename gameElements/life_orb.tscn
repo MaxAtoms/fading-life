@@ -63,4 +63,5 @@ texture = SubResource("GradientTexture2D_04b31")
 [node name="LifeOrbTimer" type="Timer" parent="."]
 
 [connection signal="body_shape_entered" from="." to="." method="_on_body_shape_entered"]
+[connection signal="tree_entered" from="." to="." method="_on_tree_entered"]
 [connection signal="timeout" from="LifeOrbTimer" to="." method="_on_life_orb_timer"]
