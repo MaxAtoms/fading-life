@@ -1,27 +1,45 @@
 [gd_scene load_steps=3 format=3 uid="uid://bhpkk0dikk2kc"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ofb81"]
-bg_color = Color(0, 0, 0, 1)
+[sub_resource type="GDScript" id="GDScript_nb4k0"]
+script/source = "extends CanvasLayer
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nb4k0"]
-bg_color = Color(1, 1, 1, 1)
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass # Replace with function body.
 
-[node name="Ui" type="Control"]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
 
-[node name="Healthbar" type="ProgressBar" parent="."]
-layout_mode = 0
-offset_right = 4.0
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
+	
+# Score Update
+
+# Health Bar Update
+func _on_player_health_changed(new_health: Variant) -> void:
+	$HealthBar.value = new_health
+"
+
+[sub_resource type="GDScript" id="GDScript_ofb81"]
+script/source = "extends ProgressBar
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
+"
+
+[node name="Ui" type="CanvasLayer"]
+script = SubResource("GDScript_nb4k0")
+
+[node name="Label" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="HealthBar" type="ProgressBar" parent="."]
+offset_right = 1144.0
 offset_bottom = 27.0
-scale = Vector2(65.92, 1)
-theme_override_styles/background = SubResource("StyleBoxFlat_ofb81")
-theme_override_styles/fill = SubResource("StyleBoxFlat_nb4k0")
-step = 1.0
-value = 50.0
-rounded = true
-show_percentage = false
+script = SubResource("GDScript_ofb81")
