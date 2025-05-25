@@ -61,4 +61,7 @@ shape = SubResource("CircleShape2D_7b4h2")
 color = Color(0.73465, 0.637976, 0.257371, 1)
 texture = SubResource("GradientTexture2D_04b31")
 
+[node name="LifeOrbTimer" type="Timer" parent="."]
+
 [connection signal="body_shape_entered" from="." to="." method="_on_body_shape_entered"]
+[connection signal="timeout" from="LifeOrbTimer" to="." method="_on_life_orb_timer"]
