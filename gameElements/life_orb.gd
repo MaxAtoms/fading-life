@@ -2,6 +2,7 @@ extends Area2D
 
 @export var score = 100
 @export var radius = 3.2
+@export var radius_randomness = 1.0
 @export var decay_probability = 0.2
 @export var decay_delay = 5
 @export var decay_interval = 1
@@ -17,11 +18,12 @@ var active = false
 var grass_positions = []
 
 func _ready() -> void:
-	var max_radius = ceil(radius)
+	var final_radius = radius + randf_range(-radius_randomness, radius_randomness)
+	var max_radius = ceil(final_radius)
 
 	for x in range(-max_radius, max_radius + 1):
 		for y in range(-max_radius, max_radius + 1):
-			if x * x + y * y <= radius * radius:
+			if x * x + y * y <= final_radius * final_radius:
 				grass_positions.append(tile_map.local_to_map(global_position) + Vector2i(x, y))
 
 func _physics_process(delta: float) -> void:
