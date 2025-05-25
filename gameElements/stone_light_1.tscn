@@ -2,13 +2,13 @@
 
 [ext_resource type="Texture2D" uid="uid://bp5t5og4aa7y7" path="res://assets/stone1_light.png" id="1_avbdn"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_4hel7"]
-radius = 6.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_avbdn"]
 
 [node name="StoneLight1" type="StaticBody2D"]
 
 [node name="StoneLightSprite" type="Sprite2D" parent="."]
 texture = ExtResource("1_avbdn")
 
-[node name="StoneLightCollission" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_4hel7")
+[node name="StoneLightCollision" type="CollisionShape2D" parent="."]
+scale = Vector2(0.63518, 0.553908)
+shape = SubResource("RectangleShape2D_avbdn")

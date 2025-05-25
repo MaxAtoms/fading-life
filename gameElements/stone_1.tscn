@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://dwwwedlkkcd7k" path="res://assets/stone1.png" id="1_n06gq"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_n06gq"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_n06gq"]
 
 [node name="Stone1" type="StaticBody2D"]
 
@@ -10,5 +10,7 @@
 texture = ExtResource("1_n06gq")
 
 [node name="StoneCollission" type="CollisionShape2D" parent="."]
-scale = Vector2(0.705519, 0.614804)
-shape = SubResource("CircleShape2D_n06gq")
+position = Vector2(0, 0.5)
+scale = Vector2(0.630993, 0.587117)
+shape = SubResource("RectangleShape2D_n06gq")
+debug_color = Color(0.91638, 0.167593, 0.582649, 0.42)

@@ -1,11 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://uie8uhgd5ag0"]
+[gd_scene load_steps=3 format=3 uid="uid://uie8uhgd5ag0"]
 
 [ext_resource type="Texture2D" uid="uid://baunf761js2o8" path="res://assets/stone2_light.png" id="1_g216e"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mv7r5"]
 size = Vector2(15, 8)
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_bsbxa"]
 
 [node name="StoneLight2" type="StaticBody2D"]
 
@@ -13,10 +11,5 @@ size = Vector2(15, 8)
 texture = ExtResource("1_g216e")
 
 [node name="StoneCollision" type="CollisionShape2D" parent="."]
-position = Vector2(-0.5, 3)
+scale = Vector2(1.00298, 1.58869)
 shape = SubResource("RectangleShape2D_mv7r5")
-
-[node name="StoneCollision2" type="CollisionShape2D" parent="."]
-position = Vector2(0, -1)
-scale = Vector2(0.568096, 0.610244)
-shape = SubResource("CircleShape2D_bsbxa")

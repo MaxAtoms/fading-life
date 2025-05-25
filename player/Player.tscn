@@ -306,6 +306,8 @@ animations = [{
 }]
 
 [node name="Player" type="CharacterBody2D"]
+floor_snap_length = 3.0
+safe_margin = 0.5
 script = SubResource("GDScript_kpjcp")
 
 [node name="PlayerCollisionShape" type="CollisionShape2D" parent="."]

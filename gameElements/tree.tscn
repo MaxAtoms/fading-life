@@ -2,13 +2,13 @@
 
 [ext_resource type="Texture2D" uid="uid://nmjnq1q5gnus" path="res://assets/tree_alive.png" id="1_b4oo5"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_rlxei"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b4oo5"]
 
 [node name="Tree" type="StaticBody2D"]
 
 [node name="TreeSprite" type="Sprite2D" parent="."]
 texture = ExtResource("1_b4oo5")
 
-[node name="TreeCollission" type="CollisionShape2D" parent="."]
-scale = Vector2(0.786903, 0.522961)
-shape = SubResource("CapsuleShape2D_rlxei")
+[node name="TreeCollision" type="CollisionShape2D" parent="."]
+scale = Vector2(0.722155, 0.752079)
+shape = SubResource("RectangleShape2D_b4oo5")

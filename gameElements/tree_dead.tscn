@@ -2,14 +2,14 @@
 
 [ext_resource type="Texture2D" uid="uid://b6umq6ingplf7" path="res://assets/tree_dead.png" id="1_w1vcp"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_brvp5"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w1vcp"]
 
 [node name="TreeDead" type="StaticBody2D"]
 
 [node name="TreeDeadSprite" type="Sprite2D" parent="."]
 texture = ExtResource("1_w1vcp")
 
-[node name="TreeDeadCollission" type="CollisionShape2D" parent="."]
+[node name="TreeDeadCollision" type="CollisionShape2D" parent="."]
 position = Vector2(-1, 0)
-scale = Vector2(0.583886, 0.551519)
-shape = SubResource("CapsuleShape2D_brvp5")
+scale = Vector2(0.530743, 0.750239)
+shape = SubResource("RectangleShape2D_w1vcp")
