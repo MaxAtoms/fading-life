@@ -136,8 +136,8 @@ func _on_health_timer() -> void:
 radius = 5.0
 height = 18.0
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ulp21"]
-bg_color = Color(0, 0, 0, 1)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ayguc"]
+bg_color = Color(1, 0.319446, 0.429188, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3c3w1"]
 bg_color = Color(1, 1, 1, 1)
@@ -331,7 +331,7 @@ offset_top = -48.0
 offset_right = -128.0
 offset_bottom = -21.0
 scale = Vector2(65.92, 1)
-theme_override_styles/background = SubResource("StyleBoxFlat_ulp21")
+theme_override_styles/background = SubResource("StyleBoxFlat_ayguc")
 theme_override_styles/fill = SubResource("StyleBoxFlat_3c3w1")
 step = 1.0
 value = 50.0
