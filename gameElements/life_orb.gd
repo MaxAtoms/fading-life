@@ -1,7 +1,7 @@
 extends Area2D
 
 @export var radius = 3.2
-@onready var tile_map: TileMapLayer = $"../ParallaxBackground/ParallaxLayer/TileMapLayer"
+@onready var tile_map: TileMapLayer = $"../ParallaxBackground/ParallaxLayer/GrassTileMap"
 
 func _physics_process(delta: float) -> void:
 	$AnimatedSprite2D.play()
