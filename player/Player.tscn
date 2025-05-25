@@ -67,6 +67,10 @@ enum Direction {
 }
 
 const GRASS_TILE_ID = 1
+const LEFT_BORDER = 8
+const RIGHT_BORDER = 1272
+const TOP_BORDER = 8
+const BOTTOM_BORDER = 792
 
 var direction = Direction.DOWN
 var speed = max_speed
@@ -114,6 +118,9 @@ func player_movement(delta):
 		$AnimatedSprite2D.animation = \"idle_\" + Direction.keys()[direction].to_lower()
 
 	move_and_slide()
+	
+	position.x = clamp(position.x, LEFT_BORDER, RIGHT_BORDER)
+	position.y = clamp(position.y, TOP_BORDER, BOTTOM_BORDER)
 
 func _set_health(value):
 	var speed_scale = float(health) / max_health
@@ -351,6 +358,11 @@ shape = SubResource("CapsuleShape2D_u8vxv")
 visible = false
 position = Vector2(-15, 9)
 zoom = Vector2(3, 3)
+limit_left = 0
+limit_top = 0
+limit_right = 1280
+limit_bottom = 800
+limit_smoothed = true
 
 [node name="HealthTimer" type="Timer" parent="."]
 wait_time = 0.5

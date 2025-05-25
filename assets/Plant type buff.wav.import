@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dqfekg64w4eg3"
+path="res://.godot/imported/Plant type buff.wav-54c568f4d0af863b9359a5adffd4f843.sample"
+
+[deps]
+
+source_file="res://assets/Plant type buff.wav"
+dest_files=["res://.godot/imported/Plant type buff.wav-54c568f4d0af863b9359a5adffd4f843.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

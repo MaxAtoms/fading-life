@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://8as53ab7ctmx"
+path="res://.godot/imported/Level up Pickup (Rpg).wav-70b47d3245e4a0b51287494121fb9c00.sample"
+
+[deps]
+
+source_file="res://assets/Level up Pickup (Rpg).wav"
+dest_files=["res://.godot/imported/Level up Pickup (Rpg).wav-70b47d3245e4a0b51287494121fb9c00.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2
