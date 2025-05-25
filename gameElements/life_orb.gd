@@ -53,6 +53,7 @@ func activate():
 	active = true
 	visible = false
 	decay_timer.start(decay_delay)
+	decay_timer.wait_time = decay_interval + randf_range(-decay_interval_randomness, decay_interval_randomness)
 	
 	var max_x = 1280
 	var max_y = 800
@@ -68,7 +69,6 @@ func _on_body_shape_entered(body_rid: RID, body: Node2D, body_shape_index: int, 
 		activate()
 
 func _on_life_orb_timer() -> void:
-	decay_timer.wait_time = decay_interval + randf_range(-decay_interval_randomness, decay_interval_randomness)
 	var num_grass = 0
 	var grass_to_remove = []
 	var objects_to_remove = []
@@ -93,7 +93,3 @@ func _on_life_orb_timer() -> void:
 			object_tile_map.set_cell(pos, DEAD_OBJECT_ID, object_tile_map.get_cell_atlas_coords(pos))
 		decay_timer.stop()
 		queue_free()
-
-
-func _on_tree_entered() -> void:
-	pass # Replace with function body.

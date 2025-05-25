@@ -54,7 +54,6 @@ script/source = "extends CharacterBody2D
 @onready var health_timer = $HealthTimer
 @onready var healthbar: ProgressBar = $Healthbar
 @onready var tile_map: TileMapLayer = $\"../Control/ParallaxBackground/ParallaxLayer/GrassTileMap\"
-@onready var timer = $Decay
 
 signal dead
 signal health_changed(new_health)
@@ -150,8 +149,6 @@ func _on_health_timer() -> void:
 		health = max(health - health_decay, 0)
 		$HealingParticles.visible = false
 		$HealingParticles.stop()
-
-	#aprint(\"HP: \", health)
 "
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_u8vxv"]
@@ -350,6 +347,7 @@ safe_margin = 0.5
 script = SubResource("GDScript_kpjcp")
 
 [node name="PlayerCollisionShape" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(0, 0.5)
 scale = Vector2(0.977843, 0.901709)
 shape = SubResource("CapsuleShape2D_u8vxv")
