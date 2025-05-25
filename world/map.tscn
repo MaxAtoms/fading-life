@@ -17,7 +17,7 @@ script/source = "extends Node2D
 signal score_changed(new_score)
 
 @export var orb_scene: PackedScene
-@export var num_orbs = 50
+@export var num_orbs = 18
 
 var _score := 0
 var score:
