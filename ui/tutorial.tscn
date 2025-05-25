@@ -1,0 +1,149 @@
+[gd_scene load_steps=12 format=3 uid="uid://nluvarq8i2w4"]
+
+[ext_resource type="Texture2D" uid="uid://boccfcf5by8rx" path="res://assets/life_orb_1.png" id="1_mhju0"]
+[ext_resource type="FontFile" uid="uid://de8nno7s1brss" path="res://fonts/LazyFox Pixel Font 2.ttf" id="1_yqfsc"]
+[ext_resource type="Texture2D" uid="uid://bushf61glbjbi" path="res://assets/player.png" id="2_t5qxu"]
+[ext_resource type="Texture2D" uid="uid://dnly7udbsy4p" path="res://assets/grass.png" id="3_nyfxi"]
+[ext_resource type="FontFile" uid="uid://dyfq007g2atfg" path="res://fonts/LazyFox Pixel Font 1.ttf" id="3_vparn"]
+[ext_resource type="Texture2D" uid="uid://tw6kwtp6usq7" path="res://assets/wasteland.png" id="4_yqfsc"]
+[ext_resource type="Texture2D" uid="uid://yynglouqkdxm" path="res://world/tree.png" id="5_vparn"]
+[ext_resource type="Script" uid="uid://dhuvbihwgvtrx" path="res://ui/button.gd" id="6_t5qxu"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2cmmd"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r5h7v"]
+bg_color = Color(1, 1, 1, 1)
+
+[sub_resource type="GDScript" id="GDScript_ptnva"]
+script/source = "extends ProgressBar
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
+"
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -94.5
+offset_right = 94.5
+offset_bottom = 69.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("1_yqfsc")
+theme_override_font_sizes/font_size = 50
+text = "Tutorial"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(700, 220)
+scale = Vector2(6, 6)
+texture = ExtResource("1_mhju0")
+
+[node name="Label2" type="Label" parent="."]
+offset_left = 780.0
+offset_top = 200.0
+offset_right = 1022.0
+offset_bottom = 249.0
+theme_override_fonts/font = ExtResource("3_vparn")
+text = "Collect Orbs to regenerate and 
+get points"
+
+[node name="HealthBar" type="ProgressBar" parent="."]
+offset_left = 70.0
+offset_top = 408.0
+offset_right = 370.0
+offset_bottom = 433.0
+theme_override_styles/background = SubResource("StyleBoxFlat_2cmmd")
+theme_override_styles/fill = SubResource("StyleBoxFlat_r5h7v")
+value = 100.0
+show_percentage = false
+script = SubResource("GDScript_ptnva")
+
+[node name="Label3" type="Label" parent="."]
+offset_left = 80.0
+offset_top = 480.0
+offset_right = 415.0
+offset_bottom = 529.0
+theme_override_fonts/font = ExtResource("3_vparn")
+text = "The game ends when your health reaches 0"
+
+[node name="Sprite2D5" type="Sprite2D" parent="."]
+position = Vector2(100, 214)
+scale = Vector2(6, 6)
+texture = ExtResource("2_t5qxu")
+
+[node name="Label4" type="Label" parent="."]
+offset_left = 80.0
+offset_top = 300.0
+offset_right = 415.0
+offset_bottom = 349.0
+theme_override_fonts/font = ExtResource("3_vparn")
+text = "Move with w,a,s,d or the arrow keys"
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(700, 350)
+scale = Vector2(6, 6)
+texture = ExtResource("3_nyfxi")
+
+[node name="Label5" type="Label" parent="."]
+offset_left = 780.0
+offset_top = 310.0
+offset_right = 1115.0
+offset_bottom = 359.0
+theme_override_fonts/font = ExtResource("3_vparn")
+text = "You regenerate life on the gras"
+
+[node name="Sprite2D4" type="Sprite2D" parent="."]
+position = Vector2(700, 500)
+scale = Vector2(6, 6)
+texture = ExtResource("4_yqfsc")
+
+[node name="Label6" type="Label" parent="."]
+offset_left = 770.0
+offset_top = 470.0
+offset_right = 1105.0
+offset_bottom = 519.0
+theme_override_fonts/font = ExtResource("3_vparn")
+text = "You loose health here and get slower over 
+time"
+
+[node name="Sprite2D3" type="Sprite2D" parent="."]
+position = Vector2(1231, 764)
+scale = Vector2(2, 2)
+texture = ExtResource("5_vparn")
+
+[node name="Label7" type="Label" parent="."]
+offset_left = 1102.0
+offset_top = 747.0
+offset_right = 1437.0
+offset_bottom = 796.0
+theme_override_fonts/font = ExtResource("3_vparn")
+text = "thats a tree"
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 522.0
+offset_top = 720.0
+offset_right = 622.0
+offset_bottom = 783.0
+theme_override_fonts/font = ExtResource("3_vparn")
+theme_override_font_sizes/font_size = 40
+text = "Back"
+script = ExtResource("6_t5qxu")
+
+[connection signal="pressed" from="Button" to="Button" method="_on_pressed"]

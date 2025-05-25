@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://chillchqcf3b2"]
+[gd_scene load_steps=9 format=3 uid="uid://chillchqcf3b2"]
 
 [ext_resource type="FontFile" uid="uid://de8nno7s1brss" path="res://fonts/LazyFox Pixel Font 2.ttf" id="1_8uxxo"]
 [ext_resource type="Script" uid="uid://bev1tjhq85d67" path="res://ui/start_button.gd" id="1_t7e0r"]
 [ext_resource type="Script" uid="uid://cpjy3b5jn5aqw" path="res://ui/quit_button.gd" id="2_0dkrt"]
 [ext_resource type="FontFile" uid="uid://dyfq007g2atfg" path="res://fonts/LazyFox Pixel Font 1.ttf" id="2_ei257"]
 [ext_resource type="AudioStream" uid="uid://26aunak4nbeu" path="res://assets/Dawn - slow - scary.mp3" id="3_wk0pr"]
+[ext_resource type="Script" uid="uid://b1ppfoqdvkmgv" path="res://ui/whatever_button.gd" id="4_ei257"]
 
 [sub_resource type="InputEventKey" id="InputEventKey_wk0pr"]
 device = -1
@@ -38,7 +39,7 @@ grow_vertical = 2
 theme_override_colors/font_color = Color(0.678431, 0.262745, 0.137255, 1)
 theme_override_fonts/font = ExtResource("1_8uxxo")
 theme_override_font_sizes/font_size = 75
-text = "Last Journey"
+text = "Fading Life"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -75,6 +76,7 @@ size_flags_vertical = 3
 theme_override_fonts/font = ExtResource("2_ei257")
 theme_override_font_sizes/font_size = 50
 text = "Tutorial"
+script = ExtResource("4_ei257")
 
 [node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer"]
 custom_minimum_size = Vector2(0, 10)
@@ -94,4 +96,5 @@ volume_db = 5.0
 autoplay = true
 
 [connection signal="pressed" from="VBoxContainer/StartButton" to="VBoxContainer/StartButton" method="_on_pressed"]
+[connection signal="pressed" from="VBoxContainer/WhateverButton" to="VBoxContainer/WhateverButton" method="_on_pressed"]
 [connection signal="pressed" from="VBoxContainer/QuitButton" to="VBoxContainer/QuitButton" method="_on_pressed"]
