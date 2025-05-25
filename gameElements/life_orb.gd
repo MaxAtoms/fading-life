@@ -56,6 +56,6 @@ func _on_life_orb_timer() -> void:
 	tile_map.set_cells_terrain_connect(to_temove, GRASS_TERRAIN_SET_ID, -1, false)
 
 	if num_grass == 0:
-		tile_map.set_cells_terrain_connect([grass_positions], GRASS_TERRAIN_SET_ID, -1, false)
+		tile_map.set_cells_terrain_connect(grass_positions, GRASS_TERRAIN_SET_ID, -1, false)
 		decay_timer.stop()
 		queue_free()
