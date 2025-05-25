@@ -20,11 +20,19 @@ Globals="*res://globals.gd"
 
 [display]
 
+window/size/viewport_width=1280
+window/size/viewport_height=800
+window/size/mode=3
 window/stretch/mode="canvas_items"
 
 [dotnet]
 
 project/assembly_name="Ghostwalker"
+
+[editor]
+
+version_control/plugin_name="GitPlugin"
+version_control/autoload_on_startup=true
 
 [input]
 
