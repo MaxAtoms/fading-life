@@ -124,6 +124,8 @@ func _set_health(value):
 		health = value
 		health_changed.emit(value)
 	else:
+		health = 0
+		health_changed.emit(0)
 		dead.emit()
 
 func _on_health_timer() -> void:
