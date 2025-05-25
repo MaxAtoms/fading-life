@@ -47,8 +47,10 @@ script/source = "extends CharacterBody2D
 @export var max_health = 100
 @export var max_speed = 3000
 @export var health_decay = 2
-@onready var timer = $Decay
+@export var health_heal = 8
+@onready var health_timer = $HealthTimer
 @onready var healthbar: ProgressBar = $Healthbar
+@onready var tile_map: TileMapLayer = $\"../ParallaxBackground/ParallaxLayer/GrassTileMap\"
 
 enum Direction {
 	LEFT,
@@ -56,6 +58,8 @@ enum Direction {
 	UP,
 	DOWN
 }
+
+const GRASS_TILE_ID = 1
 
 var direction = Direction.DOWN
 var speed = max_speed
@@ -106,32 +110,26 @@ func player_movement(delta):
 	move_and_slide()
 
 func _set_health(value):
-	var temp = float(health) / max_health
-	speed = round(max_speed * temp)
-	#ToDO: walking animation
-	
-	if value >= 0:
+	var speed_scale = float(health) / max_health
+	speed = round(max_speed * speed_scale)
+	$AnimatedSprite2D.speed_scale = speed_scale
+
+	if value > 0:
 		health = value
 		healthbar.value = value
 	else:
 		var game_over = load(\"res://ui/game_over.tscn\")
 		get_tree().call_deferred(\"change_scene_to_packed\", game_over)
 
-func _on_decay_timeout() -> void:
-	health -= health_decay
+func _on_health_timer() -> void:
+	var current_tile = tile_map.local_to_map(global_position)
+
+	if tile_map.get_cell_source_id(current_tile) == GRASS_TILE_ID:
+		health = min(health + health_heal, max_health)
+	else:
+		health = max(health - health_decay, 0)
+
 	print(\"HP: \", health)
-
-func heal(amount: float):
-	health = min(health + amount, max_health)
-
-func stop_timer():
-	if timer.is_stopped():
-		return
-	timer.paused = true
-
-func start_timer():
-	if timer.paused:
-		timer.paused = false
 "
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_u8vxv"]
@@ -320,7 +318,7 @@ visible = false
 position = Vector2(-15, 9)
 zoom = Vector2(3, 3)
 
-[node name="Decay" type="Timer" parent="."]
+[node name="HealthTimer" type="Timer" parent="."]
 wait_time = 0.5
 autostart = true
 
@@ -342,4 +340,4 @@ z_index = 1
 sprite_frames = SubResource("SpriteFrames_0hmdb")
 animation = &"left"
 
-[connection signal="timeout" from="Decay" to="." method="_on_decay_timeout"]
+[connection signal="timeout" from="HealthTimer" to="." method="_on_health_timer"]
