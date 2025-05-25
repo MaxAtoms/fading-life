@@ -18,6 +18,8 @@ var active = false
 var grass_positions = []
 
 func _ready() -> void:
+	$AnimatedSprite2D.frame = randi() % $AnimatedSprite2D.sprite_frames.get_frame_count("default")
+	
 	var final_radius = radius + randf_range(-radius_randomness, radius_randomness)
 	var max_radius = ceil(final_radius)
 
