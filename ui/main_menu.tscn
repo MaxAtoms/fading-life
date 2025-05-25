@@ -5,7 +5,7 @@
 [ext_resource type="Script" uid="uid://cpjy3b5jn5aqw" path="res://ui/quit_button.gd" id="2_0dkrt"]
 [ext_resource type="FontFile" uid="uid://dyfq007g2atfg" path="res://fonts/LazyFox Pixel Font 1.ttf" id="2_ei257"]
 [ext_resource type="AudioStream" uid="uid://26aunak4nbeu" path="res://assets/Dawn - slow - scary.mp3" id="3_wk0pr"]
-[ext_resource type="Script" uid="uid://b1ppfoqdvkmgv" path="res://ui/whatever_button.gd" id="4_ei257"]
+[ext_resource type="Script" path="res://ui/whatever_button.gd" id="4_ei257"]
 [ext_resource type="Texture2D" uid="uid://ca5qxuobyup3o" path="res://assets/banner.png" id="7_p8ri8"]
 
 [sub_resource type="InputEventKey" id="InputEventKey_wk0pr"]

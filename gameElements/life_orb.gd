@@ -42,6 +42,8 @@ func _physics_process(delta: float) -> void:
 		$AnimatedSprite2D.play()
 
 func activate():
+	$AudioStreamPlayer.play(0)
+	
 	grass_tile_map.set_cells_terrain_connect(grass_positions, GRASS_TERRAIN_SET_ID, GRASS_TERRAIN_ID, false)
 	for pos in object_positions:
 		object_tile_map.set_cell(pos, ALIVE_OBJECT_ID, object_tile_map.get_cell_atlas_coords(pos))

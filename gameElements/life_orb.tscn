@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://tuj7yy2ssj76"]
+[gd_scene load_steps=13 format=3 uid="uid://tuj7yy2ssj76"]
 
 [ext_resource type="Script" uid="uid://cuatqwigart2f" path="res://gameElements/life_orb.gd" id="1_5t5e0"]
 [ext_resource type="Texture2D" uid="uid://boccfcf5by8rx" path="res://assets/life_orb_1.png" id="3_jq04s"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://jqr1mrcxmcc5" path="res://assets/life_orb_3.png" id="5_4dnh1"]
 [ext_resource type="Texture2D" uid="uid://b1a6r6tq3wirb" path="res://assets/life_orb_4.png" id="6_ap1t4"]
 [ext_resource type="Texture2D" uid="uid://bs2u032dnmgqq" path="res://assets/life_orb_5.png" id="7_8lc22"]
+[ext_resource type="AudioStream" uid="uid://bqbxdfb234gk0" path="res://assets/harp strum 1.wav" id="8_164wv"]
 [ext_resource type="Texture2D" uid="uid://dk6a770btum8y" path="res://assets/life_orb_7.png" id="9_rv8h6"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_8jl7h"]
@@ -61,6 +62,10 @@ color = Color(0.73465, 0.637976, 0.257371, 1)
 texture = SubResource("GradientTexture2D_04b31")
 
 [node name="LifeOrbTimer" type="Timer" parent="."]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_164wv")
+volume_db = 2.0
 
 [connection signal="body_shape_entered" from="." to="." method="_on_body_shape_entered"]
 [connection signal="tree_entered" from="." to="." method="_on_tree_entered"]
