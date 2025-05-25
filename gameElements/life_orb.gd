@@ -8,32 +8,41 @@ extends Area2D
 @export var decay_interval = 1
 @export var decay_interval_randomness = 0.05
 @onready var decay_timer = $LifeOrbTimer
-@onready var tile_map: TileMapLayer = $"../Control/ParallaxBackground/ParallaxLayer/GrassTileMap"
+@onready var object_tile_map: TileMapLayer = $"../Control/ParallaxBackground/ParallaxLayer/ObjectTileMap"
+@onready var grass_tile_map: TileMapLayer = $"../Control/ParallaxBackground/ParallaxLayer/GrassTileMap"
 
 const GRASS_TERRAIN_SET_ID = 0
 const GRASS_TERRAIN_ID = 0
 const GRASS_TILE_ID = 1
+const DEAD_OBJECT_ID = 2
+const ALIVE_OBJECT_ID = 3
 
 var active = false
 var grass_positions = []
+var object_positions = []
 
 func _ready() -> void:
 	$AnimatedSprite2D.frame = randi() % $AnimatedSprite2D.sprite_frames.get_frame_count("default")
-	
+
 	var final_radius = radius + randf_range(-radius_randomness, radius_randomness)
 	var max_radius = ceil(final_radius)
 
 	for x in range(-max_radius, max_radius + 1):
 		for y in range(-max_radius, max_radius + 1):
 			if x * x + y * y <= final_radius * final_radius:
-				grass_positions.append(tile_map.local_to_map(global_position) + Vector2i(x, y))
+				var grass_pos = grass_tile_map.local_to_map(global_position) + Vector2i(x, y)
+				var object_pos = object_tile_map.local_to_map(global_position) + Vector2i(x, y)
+				grass_positions.append(grass_pos)
+				object_positions.append(object_pos)
 
 func _physics_process(delta: float) -> void:
 	if not active:
 		$AnimatedSprite2D.play()
 
 func activate():
-	tile_map.set_cells_terrain_connect(grass_positions, GRASS_TERRAIN_SET_ID, GRASS_TERRAIN_ID, false)
+	grass_tile_map.set_cells_terrain_connect(grass_positions, GRASS_TERRAIN_SET_ID, GRASS_TERRAIN_ID, false)
+	for pos in object_positions:
+		object_tile_map.set_cell(pos, ALIVE_OBJECT_ID, object_tile_map.get_cell_atlas_coords(pos))
 	Globals.score += score
 	active = true
 	visible = false
@@ -46,18 +55,26 @@ func _on_body_shape_entered(body_rid: RID, body: Node2D, body_shape_index: int, 
 func _on_life_orb_timer() -> void:
 	decay_timer.wait_time = decay_interval + randf_range(-decay_interval_randomness, decay_interval_randomness)
 	var num_grass = 0
-	var to_temove = []
+	var grass_to_remove = []
+	var objects_to_remove = []
 
-	for pos in grass_positions:
-		if tile_map.get_cell_source_id(pos) == GRASS_TILE_ID:
+	for i in range(0, len(grass_positions)):
+		var grass_pos = grass_positions[i]
+		var object_pos = object_positions[i]
+		if grass_tile_map.get_cell_source_id(grass_pos) == GRASS_TILE_ID:
 			if randf() < decay_probability:
-				to_temove.append(pos)
+				grass_to_remove.append(grass_pos)
+				objects_to_remove.append(object_pos)
 			else:
 				num_grass += 1
 
-	tile_map.set_cells_terrain_connect(to_temove, GRASS_TERRAIN_SET_ID, -1, false)
+	grass_tile_map.set_cells_terrain_connect(grass_to_remove, GRASS_TERRAIN_SET_ID, -1, false)
+	for pos in objects_to_remove:
+		object_tile_map.set_cell(pos, DEAD_OBJECT_ID, object_tile_map.get_cell_atlas_coords(pos))
 
 	if num_grass == 0:
-		tile_map.set_cells_terrain_connect(grass_positions, GRASS_TERRAIN_SET_ID, -1, false)
+		grass_tile_map.set_cells_terrain_connect(grass_positions, GRASS_TERRAIN_SET_ID, -1, false)
+		for pos in object_positions:
+			object_tile_map.set_cell(pos, DEAD_OBJECT_ID, object_tile_map.get_cell_atlas_coords(pos))
 		decay_timer.stop()
 		queue_free()
