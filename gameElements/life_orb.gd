@@ -8,8 +8,8 @@ extends Area2D
 @export var decay_interval = 1
 @export var decay_interval_randomness = 0.05
 @onready var decay_timer = $LifeOrbTimer
-@onready var object_tile_map: TileMapLayer = $"../Control/ParallaxBackground/ParallaxLayer/ObjectTileMap"
-@onready var grass_tile_map: TileMapLayer = $"../Control/ParallaxBackground/ParallaxLayer/GrassTileMap"
+@onready var object_tile_map: TileMapLayer = $"../Control/ObjectTileMap"
+@onready var grass_tile_map: TileMapLayer = $"../Control/GrassTileMap"
 
 @export var orb_scene = preload("res://gameElements/life_orb.tscn")
 

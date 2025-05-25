@@ -53,7 +53,7 @@ script/source = "extends CharacterBody2D
 @export var health_heal = 8
 @onready var health_timer = $HealthTimer
 @onready var healthbar: ProgressBar = $Healthbar
-@onready var tile_map: TileMapLayer = $\"../Control/ParallaxBackground/ParallaxLayer/GrassTileMap\"
+@onready var tile_map: TileMapLayer = $\"../Control/GrassTileMap\"
 
 signal dead
 signal health_changed(new_health)
@@ -117,7 +117,7 @@ func player_movement(delta):
 		$AnimatedSprite2D.animation = \"idle_\" + Direction.keys()[direction].to_lower()
 
 	move_and_slide()
-	
+
 	position.x = clamp(position.x, LEFT_BORDER, RIGHT_BORDER)
 	position.y = clamp(position.y, TOP_BORDER, BOTTOM_BORDER)
 
@@ -342,6 +342,8 @@ animations = [{
 }]
 
 [node name="Player" type="CharacterBody2D"]
+collision_layer = 3
+collision_mask = 3
 floor_snap_length = 3.0
 safe_margin = 0.5
 script = SubResource("GDScript_kpjcp")
@@ -354,6 +356,7 @@ shape = SubResource("CapsuleShape2D_u8vxv")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(-15, 9)
+zoom = Vector2(3, 3)
 limit_left = 0
 limit_top = 0
 limit_right = 1280
