@@ -1,9 +1,17 @@
-[gd_scene load_steps=5 format=3 uid="uid://dv8ewmpckfc8y"]
+[gd_scene load_steps=7 format=3 uid="uid://dv8ewmpckfc8y"]
 
 [ext_resource type="Script" uid="uid://bev1tjhq85d67" path="res://ui/start_button.gd" id="1_5eixk"]
 [ext_resource type="Script" uid="uid://bmeaa3y2y3a6j" path="res://ui/game_over.gd" id="1_xjda6"]
 [ext_resource type="Script" uid="uid://cpjy3b5jn5aqw" path="res://ui/quit_button.gd" id="2_j1fe5"]
 [ext_resource type="AudioStream" uid="uid://26aunak4nbeu" path="res://assets/Dawn - slow - scary.mp3" id="3_j1fe5"]
+
+[sub_resource type="InputEventKey" id="InputEventKey_xjda6"]
+device = -1
+keycode = 32
+unicode = 32
+
+[sub_resource type="Shortcut" id="Shortcut_akjlf"]
+events = [SubResource("InputEventKey_xjda6")]
 
 [node name="GameOver" type="Control"]
 layout_mode = 3
@@ -29,6 +37,7 @@ text = "Score: 0000"
 [node name="StartButton" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 50
+shortcut = SubResource("Shortcut_akjlf")
 text = "Restart Game"
 script = ExtResource("1_5eixk")
 

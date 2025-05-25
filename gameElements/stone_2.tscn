@@ -12,12 +12,10 @@
 texture = ExtResource("1_hxib0")
 
 [node name="StoneCollission" type="CollisionShape2D" parent="."]
-visible = false
 position = Vector2(0, 3)
 scale = Vector2(-0.804566, 0.346805)
 shape = SubResource("RectangleShape2D_ow2d4")
 
 [node name="StoneCollission2" type="CollisionShape2D" parent="."]
-visible = false
 scale = Vector2(0.696541, 0.65142)
 shape = SubResource("CircleShape2D_xvpae")

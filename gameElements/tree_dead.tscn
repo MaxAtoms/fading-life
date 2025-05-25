@@ -10,7 +10,6 @@
 texture = ExtResource("1_w1vcp")
 
 [node name="TreeDeadCollission" type="CollisionShape2D" parent="."]
-visible = false
 position = Vector2(-1, 0)
 scale = Vector2(0.583886, 0.551519)
 shape = SubResource("CapsuleShape2D_brvp5")

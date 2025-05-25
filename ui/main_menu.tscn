@@ -1,8 +1,16 @@
-[gd_scene load_steps=4 format=3 uid="uid://chillchqcf3b2"]
+[gd_scene load_steps=6 format=3 uid="uid://chillchqcf3b2"]
 
 [ext_resource type="Script" uid="uid://bev1tjhq85d67" path="res://ui/start_button.gd" id="1_t7e0r"]
 [ext_resource type="Script" uid="uid://cpjy3b5jn5aqw" path="res://ui/quit_button.gd" id="2_0dkrt"]
 [ext_resource type="AudioStream" uid="uid://26aunak4nbeu" path="res://assets/Dawn - slow - scary.mp3" id="3_wk0pr"]
+
+[sub_resource type="InputEventKey" id="InputEventKey_wk0pr"]
+device = -1
+keycode = 32
+unicode = 32
+
+[sub_resource type="Shortcut" id="Shortcut_rmr83"]
+events = [SubResource("InputEventKey_wk0pr")]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -34,6 +42,7 @@ offset_bottom = 405.0
 [node name="StartButton" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 50
+shortcut = SubResource("Shortcut_rmr83")
 text = " Start Game "
 script = ExtResource("1_t7e0r")
 
