@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://chillchqcf3b2"]
+[gd_scene load_steps=10 format=3 uid="uid://chillchqcf3b2"]
 
 [ext_resource type="FontFile" uid="uid://de8nno7s1brss" path="res://fonts/LazyFox Pixel Font 2.ttf" id="1_8uxxo"]
 [ext_resource type="Script" uid="uid://bev1tjhq85d67" path="res://ui/start_button.gd" id="1_t7e0r"]
@@ -6,6 +6,7 @@
 [ext_resource type="FontFile" uid="uid://dyfq007g2atfg" path="res://fonts/LazyFox Pixel Font 1.ttf" id="2_ei257"]
 [ext_resource type="AudioStream" uid="uid://26aunak4nbeu" path="res://assets/Dawn - slow - scary.mp3" id="3_wk0pr"]
 [ext_resource type="Script" uid="uid://b1ppfoqdvkmgv" path="res://ui/whatever_button.gd" id="4_ei257"]
+[ext_resource type="Texture2D" uid="uid://ca5qxuobyup3o" path="res://assets/banner.png" id="7_p8ri8"]
 
 [sub_resource type="InputEventKey" id="InputEventKey_wk0pr"]
 device = -1
@@ -36,7 +37,7 @@ offset_right = 279.0
 offset_bottom = -204.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_colors/font_color = Color(0.678431, 0.262745, 0.137255, 1)
+theme_override_colors/font_color = Color(0.301961, 0.717647, 0.188235, 1)
 theme_override_fonts/font = ExtResource("1_8uxxo")
 theme_override_font_sizes/font_size = 75
 text = "Fading Life"
@@ -94,6 +95,12 @@ script = ExtResource("2_0dkrt")
 stream = ExtResource("3_wk0pr")
 volume_db = 5.0
 autoplay = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(910, 400)
+scale = Vector2(2, 2)
+texture = ExtResource("7_p8ri8")
 
 [connection signal="pressed" from="VBoxContainer/StartButton" to="VBoxContainer/StartButton" method="_on_pressed"]
 [connection signal="pressed" from="VBoxContainer/WhateverButton" to="VBoxContainer/WhateverButton" method="_on_pressed"]
