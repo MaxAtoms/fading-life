@@ -8,7 +8,7 @@ extends Area2D
 @export var decay_interval = 1
 @export var decay_interval_randomness = 0.05
 @onready var decay_timer = $LifeOrbTimer
-@onready var tile_map: TileMapLayer = $"../ParallaxBackground/ParallaxLayer/GrassTileMap"
+@onready var tile_map: TileMapLayer = $"../Control/ParallaxBackground/ParallaxLayer/GrassTileMap"
 
 const GRASS_TERRAIN_SET_ID = 0
 const GRASS_TERRAIN_ID = 0

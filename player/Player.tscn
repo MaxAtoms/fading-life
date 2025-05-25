@@ -50,7 +50,7 @@ script/source = "extends CharacterBody2D
 @export var health_heal = 8
 @onready var health_timer = $HealthTimer
 @onready var healthbar: ProgressBar = $Healthbar
-@onready var tile_map: TileMapLayer = $\"../ParallaxBackground/ParallaxLayer/GrassTileMap\"
+@onready var tile_map: TileMapLayer = $\"../Control/ParallaxBackground/ParallaxLayer/GrassTileMap\"
 @onready var timer = $Decay
 
 signal dead
