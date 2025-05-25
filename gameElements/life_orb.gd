@@ -11,6 +11,8 @@ extends Area2D
 @onready var object_tile_map: TileMapLayer = $"../Control/ParallaxBackground/ParallaxLayer/ObjectTileMap"
 @onready var grass_tile_map: TileMapLayer = $"../Control/ParallaxBackground/ParallaxLayer/GrassTileMap"
 
+@export var orb_scene = preload("res://gameElements/life_orb.tscn")
+
 const GRASS_TERRAIN_SET_ID = 0
 const GRASS_TERRAIN_ID = 0
 const GRASS_TILE_ID = 1
@@ -51,6 +53,15 @@ func activate():
 	active = true
 	visible = false
 	decay_timer.start(decay_delay)
+	
+	var max_x = 1280
+	var max_y = 800
+
+	var orb = orb_scene.instantiate()
+	orb.position = Vector2(randf_range(0, max_x), randf_range(0, max_y))
+	
+	if parent.name == "Map":
+		parent.add_child(orb)
 
 func _on_body_shape_entered(body_rid: RID, body: Node2D, body_shape_index: int, local_shape_index: int) -> void:
 	if not active:

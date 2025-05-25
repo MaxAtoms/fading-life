@@ -355,9 +355,7 @@ scale = Vector2(0.977843, 0.901709)
 shape = SubResource("CapsuleShape2D_u8vxv")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-visible = false
 position = Vector2(-15, 9)
-zoom = Vector2(3, 3)
 limit_left = 0
 limit_top = 0
 limit_right = 1280

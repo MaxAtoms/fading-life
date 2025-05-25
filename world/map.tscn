@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=4 uid="uid://btxopix0urky7"]
+[gd_scene load_steps=21 format=4 uid="uid://du284k1xljknp"]
 
 [ext_resource type="PackedScene" uid="uid://dv8ewmpckfc8y" path="res://ui/game_over.tscn" id="2_4pkq1"]
 [ext_resource type="PackedScene" uid="uid://dtrtqnb5du6sc" path="res://player/Player.tscn" id="2_uvqf1"]
@@ -17,6 +17,7 @@ script/source = "extends Node2D
 signal score_changed(new_score)
 
 @export var orb_scene: PackedScene
+@export var num_orbs = 50
 
 var _score := 0
 var score:
@@ -38,18 +39,13 @@ func _ready() -> void:
 
 	randomize()
 
-	var num_orbs = 100
-	var min_x = -1000
-	var min_y = -1000
-	var max_x = 1000
-	var max_y = 1000
+	var max_x = 1280
+	var max_y = 800
 
 	for i in range(num_orbs):
-		var random_vector2 = Vector2(randf_range(min_x, max_x), randf_range(min_y, max_y))
 		var orb = orb_scene.instantiate()
-		orb.position = random_vector2
+		orb.position = Vector2(randf_range(0, max_x), randf_range(0, max_y))
 		add_child(orb)
-		print(\"Vector2 Coordinate %d: %s\" % [i + 1, str(random_vector2)])
 	return
 	
 "
